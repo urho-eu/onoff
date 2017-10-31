@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title= title
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='')
+    meta(name='author' content='')
+
+    link(rel='icon', href='/favicon.ico')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700')
+    link(rel='stylesheet', href='stylesheets/font-awesome/font-awesome.css')
+
+    link(rel='stylesheet', href='stylesheets/bootstrap/bootstrap.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    link(rel='stylesheet', href='stylesheets/dmb.css')
+    link(rel='stylesheet', href='stylesheets/switch.css')
+
+    script(src='/javascripts/jquery-3.2.1.min.js')
+  body
+
+    include header.pug
+
+    block content
+
+    include footer.pug
+
+    include scripts.pug

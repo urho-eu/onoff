@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 13px Helvetica, Arial;
+}
+
+form {
+  background: #000000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+form input {
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: .5%;
+}
+
+form button {
+  width: 9%;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 10px;
+}
+
+label {
+  display: block;
+}
+
+div.info {
+  margin: 1em 0 1em 0;
+  padding: 1em 0 1em 0;
+}
+
+span.hint {
+  font-style: italic;
+  display: block;
+}
+
+div.params {
+  padding: 1em 0 1em 0;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.params div {
+  margin-bottom: 1em;
+}
+
+.dmbcomm {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 10em;
+  overflow-y: scroll;
+}
+
+.dmbcomm li {
+  padding: 5px 10px;
+}
+
+.dmbcomm li:nth-child(even) {
+  background: #eeeeee;
+}
+
+.dmbcomm li:nth-child(odd) {
+  background: #e0e0e0;
+}
+
+.dmbcomm li.broadcast {
+  color: green;
+}
+
+.dmbcomm li.private {
+  color: red;
+}
+
+.dmb .status {
+  display: inline-block;
+  background-color: red;
+  height: 10px;
+  width: 10px;
+  line-height: 10px;
+/*
+  vertical-align: top;
+  position: fixed;
+*/
+  z-index: 100000;
+  top: 2px;
+  left: 2px;
+}
+.dmb .status.active {
+  background-color: lightgreen;
+}
+.dmb .status.unread {
+  background-color: yellow;
+}

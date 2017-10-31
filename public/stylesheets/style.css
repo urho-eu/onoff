@@ -1,0 +1,148 @@
+body {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.8;
+  background-color: #f1f1f1;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-weight: 400;
+  font-family: "Roboto Slab", serif;
+  color: lightblue;
+}
+
+h4.pagetitle
+{
+  margin: 0.2em 0 1em 0;
+}
+
+a {
+  text-decoration: none;
+  color: #dc8c96;
+}
+
+a:hover {
+  color: #ca5160;
+}
+
+.hidden {
+  display: none;
+}
+
+.header {
+  padding-top: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+#onoffid {
+  text-align: right;
+}
+
+/**
+ * Intro view
+ */
+.step {
+  padding: 2em;
+  color: white;
+  font-size: 20px;
+  line-height: 4em;
+  font-weight: 600;
+  text-align: center;
+  margin: 0.5em auto 1em auto;
+}
+.step.small {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0.5em;
+  margin: 0;
+}
+.step.zero {
+  background-color: #89b3e8;
+}
+.step.one {
+  background-color: #2d8c39;
+}
+.step.two {
+  background-color: #2c7b80;
+}
+.step.three {
+  background-color: #de5119;
+}
+.step a {
+  text-decoration: none;
+  color: white;
+}
+.step a:hover {
+  color: lightblue;
+}
+
+/**
+ * Control view
+ */
+.control {
+  font-size: 16px;
+}
+
+.control .row {
+  margin-bottom: 1.5em;
+}
+
+.control .label,
+.control .value,
+.question {
+  font-size: 14px;
+}
+
+#removedev {
+  width: 10em;
+}
+
+/**
+ * Register view
+ */
+.pageinfo {
+  margin: 0.5em 0 2em 0;
+}
+
+.caminfo {
+  margin: 0.5em 0 2em 0;
+}
+
+#preview {
+  width: 300px;
+  margin: 0.5em 0 1em 0;
+}
+
+#deviceid {
+/*
+  padding: 0 0.2em 0 0.2em;
+  height: 2em;
+  margin-right: 1em;
+*/
+}
+
+/**
+ * Shared among views
+ */
+.intro,
+.control,
+.register {
+  padding: 10px;
+}
+
+.pushbtn {
+  padding: 0 0.2em 0 0.2em;
+  height: 2em;
+}
+
+.devtmpl {
+  font-size: 14px;
+  margin: 0 0 0.5em 0;
+}
+
+.devtmpl input {
+  margin: 0 1em 0 0.5em;
+}

@@ -1,0 +1,45 @@
+extends index
+
+include device_list
+
+block content
+
+  div.container-fluid
+
+    div.row.justify-content-lg-between
+      div.col-4
+        h4.pagetitle Control
+      div.col-8
+        div.row.justify-content-end
+          div.col-4.col-lg-2.step.small.zero
+            a(href='/') Intro
+          div.col-4.col-lg-2.step.small.two
+            a(href='/register') Register
+
+    div.row.justify-content-lg-start
+      div.col-5.nodevices.hidden There are no devices registered under your account.
+
+      +device_list('Select Device')
+
+      div.col-6.control.hidden
+        div.row.align-items-center
+          div.col-sm-4.col-md-4.label Device Id
+          div#deviceid.col-sm-8.col-md-8.value not available
+
+        div.row.align-items-center
+          div.col-sm-4.col-md-4.question Switch
+
+          div.col-sm-4.col-md-8.switch
+            input#switch.cmn-toggle.cmn-toggle-round(type='checkbox')
+            label(for='switch')
+
+        div.row.align-items-center
+          div.col-sm-4.col-md-4.label Last Message
+          div#uplinkdata.col-sm-8.col-md-8.value -
+
+        div.row.align-items-center
+          div.col-sm-2.col-md-3.question
+            input#removedev.pushbtn(value='Remove Device',type='button')
+
+block append scripts
+  script(src='/javascripts/control.js')

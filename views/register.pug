@@ -1,0 +1,49 @@
+extends index
+
+include device_list
+
+block content
+
+  div.container-fluid
+
+    div.row.justify-content-between
+      div.col-4
+        h4.pagetitle Register
+      div.col-8
+        div.row.justify-content-end
+          div.col-4.col-lg-2.step.small.zero
+            a(href='/') Intro
+          div.col-4.col-lg-2.step.small.three
+            a(href='/control') Control
+
+    div.row.justify-content-lg-start
+
+      +device_list('Device List')
+
+      div.register.col-8.col-md-10
+        div.row.align-items-left
+          div.col-12.pageinfo
+            | Scan the QR code or add the device identifier of your SmartSocket manually.
+
+        div.row.align-items-left
+          div.col-6.caminfo
+            | There are no cameras available.
+
+        div.row.align-items-left
+          div.camtmpl.hidden
+            input(type='radio' name='camera' value='0')
+            span
+          div.col-6.cameras.hidden
+
+        div.row.align-items-left
+          div.col-6.video.hidden
+            video#preview
+
+        div.row.align-items-center
+          div.col-6
+            input#deviceid(type='text' name='devid' maxlength=16 placeholder='Device ID')
+            input#register.pushbtn(type='button' value='Register')
+
+block append scripts
+  script(src='/javascripts/instascan.min.js')
+  script(src='/javascripts/register.js')

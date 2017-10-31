@@ -1,0 +1,11 @@
+mixin device_list(label)
+
+  div.devtmpl.hidden
+    input(type='radio' name='device' value='0')
+    span.devid
+
+  div.devices.col-sm-4.col-md-2.hidden
+    h6= label
+
+block append scripts
+  script(src='/javascripts/device_list.js')

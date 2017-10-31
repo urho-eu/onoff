@@ -1,0 +1,32 @@
+{
+  "name": "onoff",
+  "version": "0.0.2",
+  "description": "Smart Socket demo application based on Grus backend.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feri/onoff.git"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "aws-iot-device-sdk": "~2.1.0",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "events": "~1.1.1",
+    "express": "~4.15.5",
+    "instascan": "^1.0.0",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5",
+    "socket.io": "~2.0.3",
+    "request-promise": "~4.2.2"
+  },
+  "maintainers": [
+    {
+      "name": "ferenc",
+      "email": "ferenc.szekely@urho.eu"
+    }
+  ]
+}
