@@ -1,5 +1,5 @@
-== OnOff
-
+OnOff
+===
 OnOff is a web based IoT device manager. It's primary usecase is to
 control Grus SmartSocket prototypes. It can however evolve to become a
 generic manager for devices that are integrated with the Grus IoT platform.
