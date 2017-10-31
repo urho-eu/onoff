@@ -134,8 +134,12 @@ jQuery(document).on('dmb_start', function(event, dmb_params) {
           var eventName = msg.trigger;
           if (eventName) {
             var e = jQuery.Event(eventName);
+            var userId = '';
+            if (window.onOffUser) {
+              userId = window.onOffUser.userId;
+            }
             e.params = {
-              socket: {sid: socket.id, userId: window.window.onOffUser.userId || ''},
+              socket: {sid: socket.id, userId: userId},
               payload: msg.payload
             };
 
