@@ -54,6 +54,10 @@ div.params {
   margin-bottom: 1em;
 }
 
+.dmb #messages {
+  display: none;
+}
+
 .dmbcomm {
   list-style-type: none;
   margin: 0;

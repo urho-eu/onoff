@@ -1,6 +1,13 @@
 block uplinks
 
-  div(class='container-fluid fixed-bottom rounded-bottom border border-left-0 border-right-0 border-secondary')
-    ul(class='dmbcomm' id='messages')
-    ul(class='dmbcomm' id='alerts')
-    ul(class='dmbcomm' id='logs')
+  div.dmb.container-fluid.fixed-bottom.rounded-bottom.border.border-left-0.border-right-0.border-secondary
+    div.row.align-items-left
+      div.col-sm-1.col-md-1
+        input#dmbswitch.cmn-toggle.cmn-toggle-round(type='checkbox')
+        label(for='dmbswitch')
+
+      div.col-sm-11.col-md-11
+        ul#messages.dmbcomm
+
+block append scripts
+  script(src='/javascripts/uplinks.js')
