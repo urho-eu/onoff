@@ -96,9 +96,15 @@ a:hover {
   font-size: 14px;
 }
 
+.timer span.label {
+  margin: 0 1.5em 0 0.2em;
+}
+
 #removedev {
   width: 10em;
 }
+
+
 
 /**
  * Register view

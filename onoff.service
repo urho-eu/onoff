@@ -1,0 +1,15 @@
+[Unit]
+After=network.target
+Description=OnOff Demo
+ConditionPathExists=|/usr/bin
+
+[Service]
+User=www-data
+RestartSec=3s
+Restart=always
+Environment="DEBUG=OnOff*,DMB*,AWS*"
+SyslogIdentifier=ONOFF
+ExecStart=/var/www/onoff/bin/www
+
+[Install]
+WantedBy=multi-user.target

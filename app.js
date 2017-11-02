@@ -361,6 +361,24 @@ function handleDownlinkCommand(params) {
         debug('device DELETE NOK:', err.message);
       });
       break;
+    case 'changeUplinkTimer':
+      // translate the received command to device specific command
+      params.payload.deviceCommand = '34';
+      var newTimer = Number(params.payload.timer).toString(16);
+      var padding = '0'.repeat(6 - newTimer.length);
+      var seqNum = '00';
+      params.payload.deviceCommand += seqNum + (padding + newTimer);
+      debug('params %o', params);
+
+      var shadowPayload = {
+        state: {
+          desired: {
+            payload: params.payload
+          }
+        }
+      };
+      awsDevice.publish('$aws/things/' + params.payload.deviceId + '_downlink/shadow/update', JSON.stringify(shadowPayload));
+      break;
     case 'switchOn':
       // translate the received command to device specific command
       params.payload.deviceCommand = '320100';
