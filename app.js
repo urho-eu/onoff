@@ -162,8 +162,10 @@ awsDevice.on('message', function(topic, payload) {
 
   rp(options).
   then(function(response) {
+    aws_msg_debug('device GET success: ', response);
+
     var device = JSON.parse(response).devices[0];
-    aws_msg_debug('device GET success: ', device);
+    aws_msg_debug('device GET success parsed: ', device);
     // pass the result to DMB, which will send it the appropriate websocket
     var json = JSON.parse(payload);
     var data = json.state.desired;
