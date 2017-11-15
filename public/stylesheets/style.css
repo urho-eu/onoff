@@ -100,7 +100,7 @@ a:hover {
   margin: 0 1.5em 0 0.2em;
 }
 
-#removedev {
+.control #removedev {
   width: 10em;
 }
 
@@ -115,18 +115,19 @@ a:hover {
   margin: 0.5em 0 2em 0;
 }
 
-#preview {
+.register #preview {
   width: 150px;
-  max-height: 200px;
+  max-height: 150px;
   margin: 0.5em 0 1em 0;
 }
 
-#deviceid {
-/*
+.register #deviceid {
   padding: 0 0.2em 0 0.2em;
   height: 2em;
-  margin-right: 1em;
+/*
+  margin-right: em;
 */
+  max-width: 12em;
 }
 
 /**

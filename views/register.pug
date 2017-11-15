@@ -26,21 +26,21 @@ block content
             | Scan the QR code or add the device identifier of your SmartSocket manually.
 
         div.row.align-items-left
-          div.col-6.caminfo
+          div.col-12.caminfo
             | There are no cameras available.
 
         div.row.align-items-left
           div.camtmpl.hidden
             input(type='radio' name='camera' value='0')
             span
-          div.col-6.cameras.hidden
+          div.col-12.cameras.hidden
 
         div.row.align-items-left
-          div.col-6.video.hidden
+          div.col-12.video.hidden
             video#preview
 
         div.row.align-items-center
-          div.col-6
+          div.col-12
             input#deviceid(type='text' name='devid' maxlength=16 placeholder='Device ID')
             input#register.pushbtn(type='button' value='Register')
 
