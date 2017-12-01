@@ -12,6 +12,11 @@ jQuery(document).ready(function() {
   // wait till onOffUser gets available; see account.js
   jQuery(document).on('onOffUser', initControl);
 
+  // changeLoRaWANClass event can be triggered from many places
+  jQuery(document).on('changeLoRaWANClass', function(event, params) {
+    changeLoRaWANClass(event, params);
+  });
+
   // removeDevice event can be triggered from many places
   jQuery(document).on('removeDevice', function(event, params) {
     removeDevice(event, params);
@@ -52,7 +57,7 @@ function initControl() {
 
   jQuery(document).trigger('initDeviceList', {page: 'control'});
 
-  // listen to switch change
+  // handler of the switch
   jQuery("#switch").off('change');
   jQuery('#switch').on('change', { value: 1 }, function(event) {
 
@@ -74,6 +79,40 @@ function initControl() {
       }
     }
     jQuery(document).trigger(e);
+  });
+
+  // handler for duty cycle switch
+  jQuery("#dutycycle").off('change');
+  jQuery('#dutycycle').on('change', { value: 1 }, function(event) {
+
+    var deviceId = jQuery('#deviceid').text() || 'n/a';
+    /**
+     * command to the device
+     *
+     * The dmb_downlink event is used to communicate with
+     * dmb_client.js, which is the single point of contact
+     * towards the DMB backend.
+     */
+    var e = jQuery.Event('dmb_downlink');
+    e.params = {
+      clid: dmb_params.clid,
+      payload: {
+        userId: window.onOffUser.userId,
+        deviceId: deviceId,
+        command: jQuery('#dutycycle').is(':checked') ? 'dutyCycleOn' : 'dutyCycleOff'
+      }
+    }
+    jQuery(document).trigger(e);
+  });
+
+  // handler for LoRaWAN Class selector
+  jQuery(document).on('change', '.lorawanclass input', function(event) {
+    var params = {
+      deviceId: jQuery('#deviceid').text(),
+      lorawanclass: jQuery(event.target).val()
+    };
+    console.log(params);
+    jQuery(document).trigger('changeLoRaWANClass', params);
   });
 
   // change uplink scheduler
@@ -185,6 +224,28 @@ jQuery(document).on('deviceRemoved', function(event) {
     }
   }
 });
+
+/**
+ * Changes LoRaWAN Class of the RN2483 in the smart socket
+ */
+function changeLoRaWANClass(event, params) {
+  /**
+   * The dmb_downlink event is used to communicate with
+   * dmb_client.js, which is the single point of contact
+   * towards the DMB backend.
+   */
+  var e = jQuery.Event('dmb_downlink');
+  e.params = {
+    clid: dmb_params.clid,
+    payload: {
+      userId: window.onOffUser.userId,
+      deviceId: params.deviceId,
+      command: 'changeLoRaWANClass',
+      lorawanclass: params.lorawanclass
+    }
+  };
+  jQuery(document).trigger(e);
+}
 
 /**
  * Changes uplink timer of a device

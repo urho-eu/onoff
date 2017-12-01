@@ -27,33 +27,50 @@ block content
           div#deviceid.col-sm-8.col-md-8.value not available
 
         div.row.align-items-center
-          div.col-sm-4.col-md-4.label Last Message
-          div#uplinkdata.col-sm-8.col-md-8.value -
-
-        div.row.align-items-center
-          div.col-sm-4.col-md-4.question Uplink Scheduler (seconds)
-          div.timer.col-sm-8.col-md-8.value
-            input(type='radio' name='timer' value='5')
-            span.label 5
-            input(type='radio' name='timer' value='10')
-            span.label 10
-            input(checked='checked' type='radio' name='timer' value='15')
-            span.label 15
-            input(type='radio' name='timer' value='20')
-            span.label 20
-            input(type='radio' name='timer' value='30')
-            span.label 30
-
-        div.row.align-items-center
           div.col-sm-4.col-md-4.question Switch
 
           div.col-sm-4.col-md-8.switch
             input#switch.cmn-toggle.cmn-toggle-round(type='checkbox')
             label(for='switch')
 
-        div.row.align-items-center
-          div.col-sm-2.col-md-3.question
-            input#removedev.pushbtn(value='Remove Device',type='button')
+        div.details
+          hr
+          div.row.align-items-center
+            div.col-sm-4.col-md-4.question Duty Cycle Restriction
+
+            div.col-sm-4.col-md-8.dutycycle
+              input#dutycycle.cmn-toggle.cmn-toggle-round(type='checkbox', checked='checked')
+              label(for='dutycycle')
+
+          div.row.align-items-center
+            div.col-sm-4.col-md-4.question LoRaWAN Class
+            div.lorawanclass.col-sm-8.col-md-8.value
+              input(type='radio' name='lorawanclass' value='3')
+              span.label Class A
+              input(checked='checked' type='radio' name='lorawanclass' value='2')
+              span.label Class C
+
+          div.row.align-items-center
+            div.col-sm-4.col-md-4.label Last Message
+            div#uplinkdata.col-sm-8.col-md-8.value -
+
+          div.row.align-items-center
+            div.col-sm-4.col-md-4.question Uplink Scheduler (seconds)
+            div.timer.col-sm-8.col-md-8.value
+              input(type='radio' name='timer' value='5')
+              span.label 5
+              input(type='radio' name='timer' value='10')
+              span.label 10
+              input(checked='checked' type='radio' name='timer' value='15')
+              span.label 15
+              input(type='radio' name='timer' value='20')
+              span.label 20
+              input(type='radio' name='timer' value='30')
+              span.label 30
+
+          div.row.align-items-center
+            div.col-sm-2.col-md-3.question
+              input#removedev.pushbtn(value='Remove Device',type='button')
 
 block append scripts
   script(src='/javascripts/control.js')

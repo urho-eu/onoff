@@ -363,49 +363,47 @@ function handleDownlinkCommand(params) {
         debug('device DELETE NOK:', err.message);
       });
       break;
+    case 'switchOff':
+      // translate the received command to device specific command
+      params.payload.deviceCommand = '300100';
+      publishPayload(params.payload);
+      break;
+    case 'switchOn':
+      // translate the received command to device specific command
+      params.payload.deviceCommand = '300101';
+      publishPayload(params.payload);
+      break;
     case 'changeUplinkTimer':
       // translate the received command to device specific command
-      params.payload.deviceCommand = '34';
+      params.payload.deviceCommand = '31';
       var newTimer = Number(params.payload.timer).toString(16);
       var padding = '0'.repeat(6 - newTimer.length);
       var seqNum = '00';
       params.payload.deviceCommand += seqNum + (padding + newTimer);
+      //debug('params %o', params);
+      publishPayload(params.payload);
+      break;
+    case 'dutyCycleOn':
+      // translate the received command to device specific command
+      params.payload.deviceCommand = '400100';
+      publishPayload(params.payload);
+      break;
+    case 'dutyCycleOff':
+      // translate the received command to device specific command
+      params.payload.deviceCommand = '400101';
+      publishPayload(params.payload);
+      break;
+    case 'changeLoRaWANClass':
+      // translate the received command to device specific command
       debug('params %o', params);
+      params.payload.deviceCommand = '400102';
+      switch (params.payload.lorawanclass) {
+        case '3':
+          params.payload.deviceCommand = '400103';
+          break;
+      }
 
-      var shadowPayload = {
-        state: {
-          desired: {
-            payload: params.payload
-          }
-        }
-      };
-      awsDevice.publish('$aws/things/' + params.payload.deviceId + '_downlink/shadow/update', JSON.stringify(shadowPayload));
-      break;
-    case 'switchOn':
-      // translate the received command to device specific command
-      params.payload.deviceCommand = '320100';
-
-      var shadowPayload = {
-        state: {
-          desired: {
-            payload: params.payload
-          }
-        }
-      };
-      awsDevice.publish('$aws/things/' + params.payload.deviceId + '_downlink/shadow/update', JSON.stringify(shadowPayload));
-      break;
-    case 'switchOff':
-      // translate the received command to device specific command
-      params.payload.deviceCommand = '330100';
-
-      var shadowPayload = {
-        state: {
-          desired: {
-            payload: params.payload
-          }
-        }
-      };
-      awsDevice.publish('$aws/things/' + params.payload.deviceId + '_downlink/shadow/update', JSON.stringify(shadowPayload));
+      publishPayload(params.payload);
       break;
     default:
       debug('Unknown downlink command received. Skipping.');
@@ -467,6 +465,20 @@ function handleUserUpdate(params) {
     default:
       debug('unknown user_update action: %s', params.action);
   }
+}
+
+/**
+ * Push a message to the shadow
+ */
+function publishPayload(payload) {
+  var shadowPayload = {
+    state: {
+      desired: {
+        payload: payload
+      }
+    }
+  };
+  awsDevice.publish('$aws/things/' + payload.deviceId + '_downlink/shadow/update', JSON.stringify(shadowPayload));
 }
 
 module.exports = app;
